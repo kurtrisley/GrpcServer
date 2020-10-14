@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcServer";
+
+package routePlanning;
+
+
+
+message RouteRequest {
+	string Street = 1;
+	string City = 2;
+	string Zip = 3;
+}
+
+message RouteResponse {
+	int32 miles = 1;
+	string ArrivalTime = 2;
+	repeated string steps = 3;
+}
+
+service DrivingRouter {
+	rpc PlanRoute(RouteRequest) returns (RouteResponse);
+}
